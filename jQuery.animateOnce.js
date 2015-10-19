@@ -1,16 +1,25 @@
+/* global jQuery */
+
 /**
  * Utility function for triggering animate.css animations
  */
-$.fn.animateOnce = function( className ) {
-	var animEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-		animClass    = 'animated ' + className;
 
-	this
-		.addClass( animClass )
-		.off( animEndEvent )
-		.one( animEndEvent, function() {
-			$( this ).removeClass( animClass );
-		});
+(function ( $ ) {
+	'use strict';
 
-	return this;
-};
+	$.fn.animateOnce = function( className, cb ) {
+		var animEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+			animClass    = 'animated ' + className,
+			callback     = cb || function(){};
+
+		this
+			.addClass( animClass )
+			.off( animEndEvent )
+			.one( animEndEvent, function() {
+				$( this ).removeClass( animClass );
+				callback.call( this );
+			});
+
+		return this;
+	};
+})( jQuery );
