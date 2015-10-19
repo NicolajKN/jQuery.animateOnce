@@ -1,0 +1,11 @@
+{
+  "name": "jquery.animateonce",
+  "description": "Utility function for triggering animate.css animations.",
+  "main": "jQuery.animateOnce.js",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gist.github.com/287426d2c7a057bb22aa.git"
+  }
+}
